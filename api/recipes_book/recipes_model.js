@@ -11,11 +11,10 @@ async function getRecipeById(recipe_id) {
     .select("i.ingredient_id", "ingredient_name", "quantity")
 
     const struct1 = result.reduce((acc, ingredients) => {
-
-    },)
+        return acc
+    },{ "ingredient_id": 27, "ingredient_name": "olive oil", "quantity": 0.014 })
 
     const struct = result.reduce((acc, recipe) => {
-        if (recipe.step_id) {
             acc.steps.push({
                 step_id: recipe.step_id,
                 step_number: recipe.step_number,
@@ -25,8 +24,7 @@ async function getRecipeById(recipe_id) {
                     ingredient_name: recipe.ingredient_name,
                     quantity: recipe.quantity
                 }] : []
-            })
-        }
+            }) 
         return acc
     },{
         recipe_id: result[0].recipe_id,
